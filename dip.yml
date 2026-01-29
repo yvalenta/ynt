@@ -1,0 +1,12 @@
+version: "8.0"
+
+environment:
+  RAILS_ENV: development
+
+compose:
+  files:
+    - docker-compose.yml
+
+provision:
+  - dip compose down --volumes
+  - dip compose up -d db redis
