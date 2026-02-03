@@ -1,3 +1,7 @@
+# AGENTS.md
+
+This file provides guidance to WARP (warp.dev) when working with code in this repository.
+
 ## Project Overview
 
 This is a Rails 8 + React 19 + Vite hybrid application called "YNT POC" (also referred to as "Megaplex Stack"). Rails serves as both the backend API and the entry point that renders a single HTML page where React mounts. The frontend is a Single Page Application (SPA) built with React, TypeScript, and Tailwind v4.
@@ -225,20 +229,6 @@ This repository is being developed on Windows with PowerShell. When writing comm
 - Use PowerShell syntax (e.g., `Get-ChildItem` not `ls`)
 - File paths use backslashes: `app\controllers\pages_controller.rb`
 - Use `foreman` to run Procfile.dev, or run servers in separate terminals
-
-## Rust Setup (WSL)
-
-If you are using Rust within WSL, ensure your environment is correctly configured by loading the Cargo path. Run this command before executing any Rust-related commands in your current session:
-
-```bash
-. "$HOME/.cargo/env"
-```
-
-To make this permanent, the installer typically adds this to your `~/.bashrc`. If it's not working in new terminals, verify that the following line exists at the end of your `~/.bashrc`:
-
-```bash
-[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
-```
 
 ## Reference Documentation
 
