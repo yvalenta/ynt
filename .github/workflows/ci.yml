@@ -29,14 +29,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
+      # El front se arma con Vite desde package.json, no con importmap:
+      # bin/importmap no existe y el job moría con exit 127.
+      - name: Set up Node
+        uses: actions/setup-node@v4
         with:
-          ruby-version: .ruby-version
-          bundler-cache: true
+          node-version: 22
 
+      # Solo las dependencias que viajan en el bundle; vite y compañía son
+      # herramientas de build. npm audit lee el lockfile, no necesita npm ci.
       - name: Scan for security vulnerabilities in JavaScript dependencies
-        run: bin/importmap audit
+        run: npm audit --omit=dev --audit-level=low
 
   lint:
     runs-on: ubuntu-latest
